@@ -1,4 +1,5 @@
 -- View 1: Tổng hợp lương tháng (kèm thưởng/phạt)
+DROP VIEW IF EXISTS v_monthly_salary_summary;
 CREATE VIEW v_monthly_salary_summary AS
 SELECT 
     e.employee_id,
@@ -16,16 +17,28 @@ JOIN salary_payments sp ON e.employee_id = sp.employee_id
 LEFT JOIN (
     SELECT 
         employee_id, 
-        YEAR(effective_date) AS log_year,
-        MONTHNAME(effective_date) AS log_month,
+        YEAR(effective_date) AS bd_year,
+        MONTH(effective_date) AS bd_month,  
         SUM(CASE WHEN bd_type = 'Bonus' THEN amount ELSE 0 END) AS total_bonus,
         SUM(CASE WHEN bd_type = 'Deduction' THEN amount ELSE 0 END) AS total_deduction
     FROM bonus_deductions
-    GROUP BY employee_id, YEAR(effective_date), MONTHNAME(effective_date)
+    GROUP BY employee_id, YEAR(effective_date), MONTH(effective_date)
 ) bd ON e.employee_id = bd.employee_id 
-    AND sp.year = bd.log_year 
-    AND sp.salary_month = bd.log_month;
-
+    AND sp.year = bd.bd_year 
+    AND (CASE sp.salary_month  
+            WHEN 'January' THEN 1
+            WHEN 'February' THEN 2
+            WHEN 'March' THEN 3
+            WHEN 'April' THEN 4
+            WHEN 'May' THEN 5
+            WHEN 'June' THEN 6
+            WHEN 'July' THEN 7
+            WHEN 'August' THEN 8
+            WHEN 'September' THEN 9
+            WHEN 'October' THEN 10
+            WHEN 'November' THEN 11
+            WHEN 'December' THEN 12
+        END) = bd.bd_month;
 -- View 2: Tham gia dự án
 CREATE VIEW v_project_participation AS
 SELECT 
