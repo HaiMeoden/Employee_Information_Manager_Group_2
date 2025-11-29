@@ -1,0 +1,11 @@
+﻿employee_id,full_name,position,base_salary,project_name,project_role,hours_worked,department_name
+8,Bui Dang Duong,Software Engineer,1500.0,IT Infrastructure Upgrade,Engineer,90,IT
+8,Bui Dang Duong,Software Engineer,1500.0,Website Overhaul,Developer,18,IT
+2,Do Quang Trung,HR Specialist,1000.0,Employee Onboarding Program,Coordinator,20,Human Resources
+2,Do Quang Trung,HR Specialist,1000.0,HR System Upgrade,HR Specialist,180,Human Resources
+7,Duong Dinh Anh,IT Manager,1800.0,IT Infrastructure Upgrade,Project Manager,100,IT
+7,Duong Dinh Anh,IT Manager,1800.0,Website Overhaul,Project Manager,20,IT
+12,Hoang Thi Ngoc Han,Sales Executive,1100.0,Market Expansion Q1,Sales Rep,25,Sales
+17,Le Duc Minh,Product Manager,2000.0,AI Research Initiative,Product Manager,100,Research and Development
+17,Le Duc Minh,Product Manager,2000.0,Product Prototype Development,Product Manager,12,Research and Development
+16,Nguyen Bao Tai,Research Analyst,1400.0,AI Research Initiative,Researcher,130,Research and Development
